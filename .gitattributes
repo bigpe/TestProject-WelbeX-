@@ -1,3 +1,2 @@
-/js/* -linguist-vendored
 /js/* -linguist-detectable
-/js/default.js linguist-vendored
+/js/default.js linguist-detectable
