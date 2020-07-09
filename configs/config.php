@@ -7,6 +7,7 @@ return [
         'username' => '',
         'password' => '',
         'dbtype' => ''], //e.g mysql
-    "excludedColumns" => ['Date']
+    "excludedColumns" => ['Date'],
+    'dataPerPage' => 10
 ]
 ?>

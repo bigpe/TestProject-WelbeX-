@@ -32,6 +32,7 @@ function loadAppendLimit(nodeID, l = '0') {
     hashedNode[nodeID]['appendLimit'] = parseInt(l);
     hashedNode[nodeID]['appendCurrent'] = 1;
     hashedNode[nodeID]['paramsCount'] = $('#' + nodeID + '_Form').serializeArray().length;
+    document.getElementsByClassName(nodeID)[0].selectedIndex = 0; //Reset Selected Index
     formData[nodeID] = [];
     updateFormData(nodeID);
 }
@@ -78,11 +79,45 @@ function refreshPage(node, nodeID, force = false){
     })
 }
 
-document.onsubmit = function(e){
-    let process = document.getElementById("process");
+function pagination(node){
+    let processOld = loadSpinner('process');
+    formData['tableBox']['offset'] = parseInt(node.innerText) - 1;
+    $.ajax({
+        url: '/table.php',
+        method: 'POST',
+        data: {'tableData': formData},
+        complete: function (data) {
+            let parser = new DOMParser();
+            let table = parser.parseFromString(data.responseText, 'text/html').getElementById('mainTable');
+            let mainTable = document.getElementById('mainTable');
+            mainTable.innerHTML = table.innerHTML;
+            let pB = document.getElementsByClassName("pagination");
+            for (let i = 0; i < pB.length; i++)
+                pB[i].getElementsByClassName("page-item")[formData['tableBox']['offset']]
+                    .setAttribute("class", "page-item active disabled");
+            returnSpinner('process', processOld);
+        }
+    })
+}
+
+function loadSpinner(nodeID){
+    let process = document.getElementById(nodeID);
     let processOld = process.innerHTML;
     process.innerHTML = "<div class=\"spinner-border text-light\" role=\"status\"></div>";
     process.setAttribute("disabled", "disabled");
+    return(processOld);
+}
+
+function returnSpinner(nodeID, processOld){
+    let process = document.getElementById(nodeID);
+    setTimeout(function () {
+        process.removeAttribute("disabled");
+        process.innerHTML = processOld;
+    }, 300)
+}
+
+document.onsubmit = function(e){
+    let processOld = loadSpinner('process');
     e.preventDefault(); //Disable OnSubmit Event
     for(let box in formData) //Update Every Box Before Sending
         updateFormData(box, true);
@@ -95,10 +130,7 @@ document.onsubmit = function(e){
             let table = parser.parseFromString(data.responseText, 'text/html').getElementById('mainTable');
             let mainTable = document.getElementById('mainTable');
             mainTable.innerHTML = table.innerHTML;
-            setTimeout(function () {
-                process.removeAttribute("disabled");
-                process.innerHTML = processOld;
-            }, 500)
+            returnSpinner('process', processOld);
         }
     })
 };

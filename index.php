@@ -33,8 +33,8 @@ $columnsCount = count($columns); ?>
     <!--Main Wrap-->
     </div>
     <div class="jumbotron jumbotron-fluid px-3 py-3 my-3 rounded text-white mb-0 text-center bg-transparent">
-        <form id="tableBox_Form">
-            <h4 class="card-header">Table</h4>
+        <form id="tableBox_Form" class="mb-n1">
+            <h4 class="card-header bg-dark"><i class="fas fa-scroll"></i> Table</h4>
             <div id="tableBox">
                 <div class="input-group mb-1" id="tableBox_Main">
                     <div class="input-group-prepend">
@@ -50,7 +50,7 @@ $columnsCount = count($columns); ?>
             <?php print("<script>loadAppendLimit('tableBox')</script>"); //Initialize Box?>
         </form>
         <form id="sortBox_Form">
-            <h4 class="card-header">Sort</h4>
+            <h4 class="card-header bg-dark"><i class="fas fa-sort"></i> Sort</h4>
             <div id="sortBox">
                 <div class="input-group mb-1" id="sortBox_Main">
                     <div class="input-group-prepend">
@@ -70,11 +70,11 @@ $columnsCount = count($columns); ?>
                 </div>
             </div>
             <?php print("<script>loadAppendLimit('sortBox', '$columnsCount')</script>"); //Set Limit To Append Blocks ?>
-            <div class="btn btn-outline-light my-3 btn-block" id="addNewSort" append_to="sortBox"
+            <div class="btn btn-outline-light my-3 btn-block border-0" id="addNewSort" append_to="sortBox"
                  onclick="appendHashedNode(this)">+ Add New</div>
         </form>
         <form id="filterBox_Form">
-            <h4 class="card-header">Filter</h4>
+            <h4 class="card-header bg-dark"><i class="fas fa-filter"></i> Filter</h4>
             <div id="filterBox">
                 <div class="input-group mb-1" id="filterBox_Main">
                     <div class="input-group-prepend">
@@ -101,12 +101,12 @@ $columnsCount = count($columns); ?>
             </div>
             <?php print("<script>loadAppendLimit('filterBox', '$columnsCount')</script>"); //Set Limit To Append Blocks?>
             <div class="input-group-prepend">
-                <div class="btn btn-outline-light my-3 btn-block" append_to="filterBox"
+                <div class="btn btn-outline-light my-3 btn-block border-0" append_to="filterBox"
                      onclick="appendHashedNode(this)">+ Add AND</div>
             </div>
             <div class="input-group-prepend">
-                <button type="submit" class="btn btn-success my-2 mx-2 shadow btn-block" id="process"><i class="fas fa-check"></i> Execute</button>
-                <div class="btn btn-danger my-2 shadow btn-block mx-2" id="reset"
+                <button type="submit" class="btn btn-success my-1 mx-2 shadow btn-block" id="process"><i class="fas fa-check"></i> Execute</button>
+                <div class="btn btn-danger my-1 shadow btn-block mx-2" id="reset"
                      onclick="refreshPage(document.getElementsByClassName('tableBox')[0], 'tableBox', true)"><i class="fas fa-sync-alt"></i> Reset</div>
             </div>
         </form>
@@ -114,7 +114,7 @@ $columnsCount = count($columns); ?>
 </div>
 <div class="container" style="margin-bottom: 4rem; margin-top: -1rem" id="mainTable">
 </div>
-<footer class="py-2 bg-dark fixed-bottom">
+<footer id='footer' class="py-2 bg-dark fixed-bottom">
     <div class="container text-center">
         <a class="badge" href="https://vk.com/bigpe" target="_blank">
             <button type="button" class="btn btn-outline-primary rounded-pill" data-toggle="tooltip" data-placement="top" title="Vkontakte">

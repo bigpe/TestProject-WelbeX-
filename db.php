@@ -21,6 +21,11 @@ class database
         $data = $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
         return($data);
     }
+    public function dbReadSingle($query)
+    {
+        $data = $this->db->query($query)->fetch(PDO::FETCH_COLUMN);
+        return($data);
+    }
     public function getTableFields($tableName){
         $q = $this->db->prepare("DESCRIBE $tableName");
         $q->execute();
