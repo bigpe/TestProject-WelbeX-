@@ -1,6 +1,7 @@
 **Single Page Application For Test Project**
 -
 *The application works with any drivers supported by PDO* (Tested - mysql 5).
+
 **To start, edit /config/config.php to connect to your database.**
 The application will find all tables and their fields.
 

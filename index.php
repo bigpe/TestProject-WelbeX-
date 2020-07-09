@@ -71,7 +71,7 @@ $columnsCount = count($columns); ?>
             </div>
             <?php print("<script>loadAppendLimit('sortBox', '$columnsCount')</script>"); //Set Limit To Append Blocks ?>
             <div class="btn btn-outline-light my-3 btn-block border-0" id="addNewSort" append_to="sortBox"
-                 onclick="appendHashedNode(this)">+ Add New</div>
+                 onclick="appendHashedNode(this)"><i class="fas fa-plus-square"></i></div>
         </form>
         <form id="filterBox_Form">
             <h4 class="card-header bg-dark"><i class="fas fa-filter"></i> Filter</h4>
@@ -102,7 +102,7 @@ $columnsCount = count($columns); ?>
             <?php print("<script>loadAppendLimit('filterBox', '$columnsCount')</script>"); //Set Limit To Append Blocks?>
             <div class="input-group-prepend">
                 <div class="btn btn-outline-light my-3 btn-block border-0" append_to="filterBox"
-                     onclick="appendHashedNode(this)">+ Add AND</div>
+                     onclick="appendHashedNode(this)"><i class="fas fa-plus-square"></i></div>
             </div>
             <div class="input-group-prepend">
                 <button type="submit" class="btn btn-success my-1 mx-2 shadow btn-block" id="process"><i class="fas fa-check"></i> Execute</button>
