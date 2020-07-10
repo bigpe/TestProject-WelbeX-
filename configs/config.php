@@ -1,13 +1,15 @@
 <?php
 return [
-    "db" => [
+    'db' => [
         'host' => '',
         'port' => '',
         'dbname' => '',
         'username' => '',
         'password' => '',
         'dbtype' => ''], //e.g mysql
-    "excludedColumns" => ['Date'],
-    'dataPerPage' => 10
+    'excludedColumns' => ['Date'], //Its can many of them, list with comas
+    'dataPerPage' => 30, //For Pagination
+    'tableNameToGenerateData' => '', //For Create Random Data in Table
+    'iterateToGenerateData' => 100 //For Create Random Data in Table
 ]
 ?>

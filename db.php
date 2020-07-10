@@ -26,6 +26,11 @@ class database
         $data = $this->db->query($query)->fetch(PDO::FETCH_COLUMN);
         return($data);
     }
+    public function dbInsert($query){
+        $this->db->beginTransaction();
+        $this->db->query($query);
+        $this->db->commit();
+    }
     public function getTableFields($tableName){
         $q = $this->db->prepare("DESCRIBE $tableName");
         $q->execute();
